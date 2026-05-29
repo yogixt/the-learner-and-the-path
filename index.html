@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>॥ नमः परमात्मने ॥ — Bijoy Laxmi Biswas · The Learner &amp; The Path</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500&family=Marcellus&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --saffron:#ff9933; --saffron-light:#ffbf73; --saffron-deep:#e2761b; --saffron-glow:rgba(255,153,51,.4);
+    --gold-1:#e6c879; --gold-2:#c79a3e; --gold-3:#9a6b1f; --gold-deep:#7d5413;
+    --maroon:#8c2d17; --maroon-deep:#6e2310;
+    --ink:#553620; --ink-soft:#6e4a2c; --ink-faint:#8f6f4c;
+    --paper:#fffdf9; --cream:#fffaf1;
+    --line:rgba(154,107,31,.40);
+    --hair:rgba(154,107,31,.30);
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+
+  body{
+    font-family:'EB Garamond','Cormorant Garamond',Georgia,serif;
+    color:var(--ink); line-height:1.6;
+    background:
+      radial-gradient(80% 60% at 50% -5%, #fdeccf 0%, transparent 60%),
+      radial-gradient(120% 90% at 50% 0%, #fff5e6 0%, #fffaf2 45%, #ffffff 100%);
+    min-height:100vh; padding:42px 18px 60px; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+
+  /* gold-foil text utility */
+  .foil{
+    background:linear-gradient(135deg,#efd594 0%,#c79a3e 38%,#8a5a14 62%,#d4ab51 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+
+  /* drifting petals (screen only) */
+  .petals{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .petal{ position:absolute; top:-40px; width:16px; height:16px;
+    background:linear-gradient(135deg,var(--saffron-light),var(--saffron-deep));
+    border-radius:0 100% 0 100%; opacity:0; animation:fall linear infinite; box-shadow:0 0 7px rgba(255,153,51,.45); }
+  .petal:nth-child(1){left:8%;width:13px;height:13px;animation-duration:20s;animation-delay:0s;}
+  .petal:nth-child(2){left:26%;width:18px;height:18px;animation-duration:25s;animation-delay:5s;}
+  .petal:nth-child(3){left:48%;width:11px;height:11px;animation-duration:22s;animation-delay:9s;}
+  .petal:nth-child(4){left:68%;width:20px;height:20px;animation-duration:28s;animation-delay:3s;}
+  .petal:nth-child(5){left:88%;width:14px;height:14px;animation-duration:21s;animation-delay:12s;}
+  @keyframes fall{0%{transform:translateY(-40px) rotate(0);opacity:0;}10%{opacity:.65;}90%{opacity:.45;}100%{transform:translateY(105vh) rotate(430deg);opacity:0;}}
+
+  /* a page sheet */
+  .sheet{
+    position:relative; max-width:790px; margin:0 auto 44px; padding:48px 56px 40px;
+    z-index:1; color:var(--ink);
+    background:
+      radial-gradient(70% 45% at 50% 0%, #fffdf6 0%, var(--paper) 58%),
+      linear-gradient(180deg,#ffffff,#fffaf1);
+    border-radius:14px;
+    box-shadow:
+      0 0 0 1px rgba(199,154,62,.22),
+      0 30px 70px rgba(199,154,62,.16),
+      0 8px 22px rgba(140,45,23,.10);
+  }
+  /* animated gold-foil rim */
+  .sheet::after{
+    content:""; position:absolute; inset:0; border-radius:14px; padding:2.5px;
+    background:linear-gradient(135deg,var(--gold-1),var(--saffron) 30%,var(--gold-3) 60%,var(--gold-1) 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; animation:rimGlow 8s ease-in-out infinite;
+  }
+  @keyframes rimGlow{0%,100%{opacity:.55;}50%{opacity:1;}}
+
+  .mandala-bg{ display:none !important; }
+  @keyframes spin{ to{ transform:translate(-50%,-50%) rotate(360deg); } }
+
+  /* inner gold frame */
+  .frame{ position:absolute; inset:16px; border:1px solid var(--hair); border-radius:8px; pointer-events:none; z-index:1; }
+  .frame::after{ content:""; position:absolute; inset:4px; border:1px solid rgba(199,154,62,.18); border-radius:5px; }
+
+  /* ornate mandala corners */
+  .corner{ position:absolute; width:62px; height:62px; color:var(--gold-2); opacity:.92; z-index:2; }
+  .corner svg{ width:100%; height:100%; display:block; }
+  .corner.tl{top:9px;left:9px;} .corner.tr{top:9px;right:9px;transform:scaleX(-1);}
+  .corner.bl{bottom:9px;left:9px;transform:scaleY(-1);} .corner.br{bottom:9px;right:9px;transform:scale(-1,-1);}
+
+  .content{ position:relative; z-index:3; }
+
+  /* ── header ── */
+  header{ position:relative; text-align:center; margin-bottom:14px; padding-top:4px; }
+  .arch{ display:none !important; }
+  .head-inner{ position:relative; z-index:1; }
+
+  .om-ring{ position:relative; display:inline-grid; place-items:center; width:64px; height:64px; margin:0 auto 2px; }
+  .om-ring::before{ content:""; position:absolute; inset:0; border-radius:50%;
+    background:radial-gradient(circle, var(--saffron-glow), transparent 68%); animation:halo 6s ease-in-out infinite; }
+  @keyframes halo{0%,100%{transform:scale(.9);opacity:.5;}50%{transform:scale(1.15);opacity:.9;}}
+  .om-mark{ position:relative; font-family:'Tiro Devanagari Sanskrit',serif; font-size:2.5rem; color:var(--saffron-deep);
+    line-height:1; text-shadow:0 1px 0 #fff3df; animation:breathe 6s ease-in-out infinite; }
+  @keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+
+  .invocation{ font-family:'Tiro Devanagari Sanskrit',serif; font-size:1.08rem; color:var(--maroon); margin:3px 0 2px; }
+  h1{ font-family:'Cinzel',serif; font-weight:600; font-size:clamp(1.7rem,4.6vw,2.6rem);
+    letter-spacing:.10em; margin:5px 0 4px; line-height:1.06; }
+  .tagline{ font-family:'Marcellus',serif; font-size:.74rem; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-deep); margin:3px 0 0; }
+
+  /* ornamental divider */
+  .orn{ display:flex; align-items:center; justify-content:center; gap:10px; margin:12px auto 0; }
+  .orn .l{ height:1px; width:78px; background:linear-gradient(to right,transparent,var(--gold-2),transparent); }
+  .orn .d{ width:6px; height:6px; background:linear-gradient(135deg,var(--gold-1),var(--gold-3)); transform:rotate(45deg); box-shadow:0 0 0 3px rgba(199,154,62,.14); }
+  .orn .om{ font-family:'Tiro Devanagari Sanskrit',serif; color:var(--maroon); font-size:1.05rem; }
+
+  .intro{ text-align:center; font-size:1.04rem; color:var(--ink-soft); max-width:90%; margin:14px auto 2px; line-height:1.68; }
+  .intro strong{ color:var(--maroon); }
+  .verse{ text-align:center; font-family:'Tiro Devanagari Sanskrit',serif; color:var(--maroon); font-size:1.14rem; margin:11px 0 2px; }
+
+  /* section title */
+  .sec-title{ display:flex; align-items:center; gap:12px; justify-content:center;
+    font-family:'Cinzel',serif; font-weight:600; font-size:.82rem; letter-spacing:.26em; text-transform:uppercase; margin:20px 0 14px; }
+  .sec-title::before,.sec-title::after{ content:""; height:1px; flex:1; max-width:120px;
+    background:linear-gradient(to right,transparent,var(--gold-2),transparent); }
+  .sec-title .lotus{ width:16px; height:16px; color:var(--saffron-deep); flex:0 0 auto; }
+
+  /* qualification */
+  .quals{ display:grid; grid-template-columns:repeat(3,1fr); gap:13px; }
+  .qual{ position:relative; text-align:center; border:1px solid var(--hair); border-radius:12px; padding:14px 11px;
+    background:linear-gradient(180deg,#fffdf8,#fff6e9); box-shadow:0 4px 14px rgba(199,154,62,.08); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .qual .k{ font-family:'Marcellus',serif; font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); }
+  .qual .v{ font-size:1rem; color:var(--maroon); margin-top:4px; line-height:1.3; }
+
+  /* what I build */
+  .skills{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .skill{ position:relative; border:1px solid var(--hair); border-radius:13px; padding:14px 13px 12px;
+    background:linear-gradient(180deg,#fffdf8,#fff6e9); text-align:center; box-shadow:0 5px 16px rgba(199,154,62,.08);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; overflow:hidden; }
+  .skill::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg,var(--saffron),var(--gold-2),var(--saffron-deep)); opacity:.85; }
+  .skill .ic{ width:34px; height:34px; margin:4px auto 7px; display:grid; place-items:center; color:var(--saffron-deep);
+    border-radius:10px; background:radial-gradient(circle at 30% 25%, #fff3df, #ffe6c4); box-shadow:inset 0 0 0 1px rgba(199,154,62,.25); }
+  .skill .ic svg{ width:19px; height:19px; }
+  .skill .name{ font-family:'Cinzel',serif; font-weight:500; font-size:.82rem; letter-spacing:.05em; color:var(--maroon); }
+  .skill .desc{ font-size:.8rem; color:var(--ink-faint); line-height:1.42; margin-top:4px; }
+
+  /* chips */
+  .chips{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; max-width:96%; margin:0 auto; }
+  .chip{ font-size:.82rem; color:var(--ink-soft); border:1px solid var(--hair); border-radius:999px;
+    padding:5px 13px; background:linear-gradient(180deg,#fffdf8,#fff4e6); transition:.25s ease; }
+  .chip b{ color:var(--maroon); font-weight:600; }
+
+  /* selected-work showcase */
+  .work{ position:relative; border:1px solid var(--hair); border-radius:18px; overflow:hidden;
+    background:linear-gradient(180deg,#fffef9 0%,#fff1dd 100%); padding:18px 16px 22px; box-shadow:0 8px 24px rgba(199,154,62,.12); }
+  .work::before{ content:""; position:absolute; inset:0; background:radial-gradient(60% 40% at 50% 0%, rgba(255,191,115,.18), transparent 70%); pointer-events:none; }
+  .work .hills{ position:absolute; left:0; right:0; bottom:0; width:100%; height:66px; opacity:.65; z-index:1; }
+  .work .hills svg{ width:100%; height:100%; display:block; }
+  .work-cards{ position:relative; z-index:2; display:flex; gap:13px; justify-content:center; align-items:stretch; flex-wrap:wrap; }
+  .wcard{ background:rgba(255,255,255,.86); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+    border:1px solid rgba(199,154,62,.3); border-radius:14px; padding:12px 14px; box-shadow:0 10px 24px rgba(140,45,23,.12);
+    min-width:152px; flex:1 1 152px; max-width:205px; transition:transform .25s ease, box-shadow .25s ease; }
+  .wcard .t{ font-size:.68rem; color:var(--ink-faint); letter-spacing:.03em; display:flex; align-items:center; gap:5px; }
+  .wcard .row{ display:flex; align-items:baseline; gap:8px; margin-top:5px; }
+  .wcard .big{ font-family:'Cinzel',serif; font-weight:600; font-size:1.55rem; color:var(--maroon); line-height:1; }
+  .badge{ display:inline-block; font-size:.63rem; color:#fff; background:linear-gradient(135deg,var(--saffron),var(--saffron-deep)); border-radius:999px; padding:2px 9px; box-shadow:0 2px 6px rgba(226,118,27,.35); }
+  .wcard .sub{ font-size:.62rem; color:var(--ink-faint); margin-top:6px; }
+  .spark{ width:100%; height:30px; margin-top:6px; }
+  .gauge-wrap{ display:flex; flex-direction:column; align-items:center; }
+  .gauge{ width:120px; height:68px; }
+  .gauge .val{ font-family:'Cinzel',serif; font-weight:600; font-size:1.2rem; fill:var(--maroon); }
+  .gstats{ display:flex; gap:16px; margin-top:2px; font-size:.6rem; color:var(--ink-faint); text-align:center; }
+  .gstats b{ display:block; color:var(--maroon); font-size:.76rem; font-family:'Cinzel',serif; }
+  .dot{ width:7px; height:7px; border-radius:2px; background:linear-gradient(135deg,var(--saffron),var(--saffron-deep)); display:inline-block; }
+
+  /* spiritual body */
+  .path-intro{ text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.16rem;
+    color:var(--ink-soft); max-width:90%; margin:8px auto 14px; line-height:1.6; }
+  .body{ font-size:1.0rem; color:var(--ink-soft); line-height:1.7; }
+  .body p{ margin:0 0 .85em; }
+  .body strong{ color:var(--maroon); } .body em{ color:var(--saffron-deep); font-style:italic; }
+  .qlist{ text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold-deep);
+    font-size:1.1rem; line-height:1.85; margin:12px 0; }
+  .qlist span{ display:block; }
+
+  /* footer */
+  footer{ margin-top:18px; }
+  .sign-row{ display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap;
+    border-top:1px solid var(--line); padding-top:16px; }
+  .sig .name{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:1.55rem; color:var(--maroon); line-height:1.05; }
+  .sig .role{ font-family:'Marcellus',serif; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); margin-top:3px; }
+  .seal{ width:66px; height:66px; flex:0 0 auto; opacity:.92; }
+  .seal svg{ width:100%; height:100%; display:block; }
+  .contacts{ display:flex; flex-wrap:wrap; justify-content:center; gap:7px 18px; margin-top:16px; font-size:.85rem; }
+  .contacts span,.contacts a{ color:var(--ink-soft); text-decoration:none; white-space:nowrap; }
+  .contacts a{ color:var(--saffron-deep); border-bottom:1px dotted rgba(226,118,27,.4); transition:.2s; }
+  .contacts a:hover{ color:var(--maroon); }
+  .contacts .lbl{ font-family:'Marcellus',serif; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-deep); margin-right:3px; }
+  .om-foot{ text-align:center; font-family:'Tiro Devanagari Sanskrit',serif; color:var(--maroon); font-size:1.05rem; margin-top:14px; }
+  .page-num{ text-align:center; font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-deep); opacity:.75; margin-top:12px; }
+
+  /* hover micro-interactions (screen) */
+  @media (hover:hover){
+    .skill:hover,.qual:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(199,154,62,.2); border-color:rgba(199,154,62,.55); }
+    .wcard:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(140,45,23,.18); }
+    .chip:hover{ color:#fff; background:linear-gradient(135deg,var(--saffron),var(--saffron-deep)); border-color:transparent; }
+    .chip:hover b{ color:#fff; }
+  }
+
+  /* responsive */
+  @media (max-width:640px){
+    .sheet{ padding:40px 24px 34px; }
+    .quals,.skills{ grid-template-columns:1fr 1fr; }
+    .sign-row{ justify-content:center; text-align:center; } .sig{ width:100%; }
+    .arch{ display:none; }
+  }
+  @media (max-width:420px){ .quals,.skills{ grid-template-columns:1fr; } }
+
+  @media (prefers-reduced-motion:reduce){ .petal,.mandala-bg,.om-mark,.om-ring::before,.sheet::after,.seal{ animation:none !important; } }
+
+  /* ── print: exactly two A4 pages ── */
+  @media print{
+    @page{ size:A4; margin:9mm; }
+    body{ background:#fff; padding:0; }
+    .petals,.mandala-bg{ display:none; }
+    .sheet{
+      max-width:100%; margin:0; box-shadow:none; padding:18px 32px 12px;
+      border:2.5px double var(--gold-2);
+      -webkit-print-color-adjust:exact; print-color-adjust:exact; break-after:page;
+    }
+    .sheet:last-of-type{ break-after:auto; }
+    .sheet::after{ display:none !important; }
+    /* gold-foil clip-text doesn't survive print rasterisation — engrave in maroon */
+    .foil{ background:none !important; -webkit-text-fill-color:var(--maroon) !important; color:var(--maroon) !important; }
+    .skills,.quals,.skill,.qual,.sign-row,.chips,.work{ break-inside:avoid; }
+    .contacts a{ border-bottom:none; }
+    /* breathing room — page 1 fills naturally */
+    .arch{ height:150px; opacity:.45; }
+    .om-ring{ width:56px; height:56px; } .om-mark{ font-size:2.1rem; }
+    header{ margin-bottom:12px; } .invocation{ font-size:1.04rem; }
+    h1{ font-size:2.3rem; } .orn{ margin-top:11px; }
+    .intro{ margin:14px auto 4px; font-size:1.03rem; line-height:1.62; }
+    .verse{ font-size:1.1rem; margin:10px 0 3px; }
+    .sec-title{ margin:16px 0 12px; font-size:.81rem; }
+    .quals{ gap:13px; } .qual{ padding:15px 12px; } .qual .v{ font-size:1.02rem; }
+    .skills{ gap:13px; } .skill{ padding:15px 13px 13px; } .skill .ic{ width:34px; height:34px; margin:4px auto 7px; }
+    .skill .ic svg{ width:19px; height:19px; } .skill .name{ font-size:.84rem; } .skill .desc{ font-size:.81rem; line-height:1.42; }
+    .chips{ gap:9px; } .chip{ padding:6px 14px; font-size:.84rem; }
+    /* page-2 body kept tighter so it stays one page */
+    .body{ font-size:.93rem; line-height:1.52; } .body p{ margin:0 0 .58em; }
+    .path-intro{ font-size:1.03rem; margin:5px auto 9px; }
+    .qlist{ font-size:1rem; line-height:1.62; margin:8px 0; }
+    footer{ margin-top:12px; } .sign-row{ padding-top:11px; } .contacts{ margin-top:11px; }
+    .om-foot{ margin-top:9px; } .page-num{ margin-top:8px; }
+
+    /* page 2 compacted independently so it stays one page */
+    .page2 header{ margin-bottom:6px; }
+    .page2 .om-ring{ width:48px; height:48px; } .page2 .om-mark{ font-size:1.8rem; }
+    .page2 h1{ font-size:2rem; } .page2 .orn{ margin-top:8px; }
+    .page2 .path-intro{ font-size:1rem; margin:4px auto 8px; }
+    .page2 .sec-title{ margin:12px 0 8px; }
+    .page2 .verse{ margin:8px 0 2px; }
+    .page2 .qlist{ line-height:1.55; margin:7px 0; }
+    .page2 .body p{ margin:0 0 .5em; }
+    .page2 footer{ margin-top:10px; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="petals" aria-hidden="true"><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span></div>
+
+  <!-- shared SVG defs: mandala petal + lotus glyph -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="mpetal"><path d="M100 26 q14 28 0 48 q-14 -20 0 -48 Z" fill="currentColor" opacity=".5"/></g>
+      <g id="cornerart">
+        <path d="M6 6 H56 M6 6 V56" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path d="M6 6 q50 0 50 50" stroke="currentColor" stroke-width="1.2" fill="none" opacity=".7"/>
+        <path d="M6 6 q32 0 32 32" stroke="currentColor" stroke-width="1" fill="none" opacity=".5"/>
+        <circle cx="20" cy="20" r="3.4" fill="currentColor"/>
+        <path d="M52 14 q7 7 0 14 q-7 -7 0 -14 Z" fill="currentColor" opacity=".85"/>
+        <path d="M14 52 q7 7 14 0 q-7 -7 -14 0 Z" fill="currentColor" opacity=".85"/>
+        <path d="M40 40 q5 5 0 10 q-5 -5 0 -10 Z" fill="currentColor" opacity=".7"/>
+      </g>
+      <g id="lotusg"><path d="M12 3 C13 8 17 8 22 9 C17 10 13 10 12 16 C11 10 7 10 2 9 C7 8 11 8 12 3 Z" fill="currentColor"/></g>
+    </defs>
+  </svg>
+
+  <!-- ════════════ PAGE 1 — PROFILE & SKILLS ════════════ -->
+  <main class="sheet" role="article" aria-label="Bijoy Laxmi Biswas — Profile and Skills">
+    <div class="mandala-bg" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="74"/><circle cx="100" cy="100" r="50"/><circle cx="100" cy="100" r="26"/><circle cx="100" cy="100" r="8" fill="currentColor"/>
+        <g><use href="#mpetal" transform="rotate(0 100 100)"/><use href="#mpetal" transform="rotate(30 100 100)"/><use href="#mpetal" transform="rotate(60 100 100)"/><use href="#mpetal" transform="rotate(90 100 100)"/><use href="#mpetal" transform="rotate(120 100 100)"/><use href="#mpetal" transform="rotate(150 100 100)"/><use href="#mpetal" transform="rotate(180 100 100)"/><use href="#mpetal" transform="rotate(210 100 100)"/><use href="#mpetal" transform="rotate(240 100 100)"/><use href="#mpetal" transform="rotate(270 100 100)"/><use href="#mpetal" transform="rotate(300 100 100)"/><use href="#mpetal" transform="rotate(330 100 100)"/></g>
+      </svg>
+    </div>
+    <div class="frame" aria-hidden="true"></div>
+    <div class="corner tl" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cornerart"/></svg></div>
+    <div class="corner tr" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cornerart"/></svg></div>
+    <div class="corner bl" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cornerart"/></svg></div>
+    <div class="corner br" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cornerart"/></svg></div>
+
+    <div class="content">
+      <header>
+        <!-- subtle temple torana arch -->
+        <div class="arch" aria-hidden="true">
+          <svg viewBox="0 0 330 170" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M40 168 V70 Q40 18 165 14 Q290 18 290 70 V168"/>
+            <path d="M58 168 V72 Q58 34 165 30 Q272 34 272 72 V168" opacity=".55"/>
+            <path d="M165 8 l5 10 l-5 6 l-5 -6 Z" fill="currentColor" stroke="none"/>
+            <path d="M40 70 q-12 -6 -22 4 M290 70 q12 -6 22 4" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="head-inner">
+          <div class="om-ring"><span class="om-mark">ॐ</span></div>
+          <p class="invocation">॥ नमः परमात्मने ॥</p>
+          <h1 class="foil">Bijoy Laxmi Biswas</h1>
+          <p class="tagline">Generative AI Developer &nbsp;·&nbsp; The Learner Yogi</p>
+          <div class="orn" aria-hidden="true"><span class="l"></span><span class="d"></span><span class="om">ॐ</span><span class="d"></span><span class="l"></span></div>
+        </div>
+      </header>
+
+      <p class="intro">
+        I build intelligent AI systems with sincerity and discipline — and walk as a lifelong learner,
+        in technology and in spirit. I work in the spirit of <strong>Karma Yoga</strong>:
+        do the work well, learn always, and offer it wholeheartedly.
+      </p>
+      <p class="verse">॥ योगः कर्मसु कौशलम् ॥</p>
+
+      <div class="sec-title"><svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg> Qualification <svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg></div>
+      <div class="quals">
+        <div class="qual"><div class="k">Degree</div><div class="v">M.Tech — Computer Science</div></div>
+        <div class="qual"><div class="k">Specialisation</div><div class="v">Generative AI &amp; LLM Applications</div></div>
+        <div class="qual"><div class="k">Role</div><div class="v">Generative AI Developer</div></div>
+      </div>
+
+      <div class="sec-title"><svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg> What I Build <svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg></div>
+      <div class="skills">
+        <div class="skill"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div><div class="name">LLMs</div><div class="desc">Building, fine-tuning &amp; RAG pipelines</div></div>
+        <div class="skill"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1Z"/><circle cx="9" cy="10.5" r="1"/><circle cx="12.5" cy="10.5" r="1"/><circle cx="16" cy="10.5" r="1"/></svg></div><div class="name">AI Chatbots</div><div class="desc">Context-aware conversational assistants</div></div>
+        <div class="skill"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="2.5" y="13" width="4" height="7" rx="1.5"/><rect x="17.5" y="13" width="4" height="7" rx="1.5"/><path d="M19.5 20a4 4 0 0 1-4 3.5H12"/></svg></div><div class="name">Customer Support</div><div class="desc">Automation that resolves &amp; deflects tickets</div></div>
+        <div class="skill"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L4 17v3h3l5.5-5.5a4 4 0 0 0 5.2-5.2l-2.5 2.5-2-2 2.5-2.5Z"/></svg></div><div class="name">Customised Tools</div><div class="desc">Bespoke AI tools for your workflow</div></div>
+        <div class="skill"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 15v-3M12 15V9M17 15v-5"/></svg></div><div class="name">Dashboards</div><div class="desc">Clear analytics &amp; insight dashboards</div></div>
+        <div class="skill"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11v2a1 1 0 0 0 1 1h2l9 5V5L6 10H4a1 1 0 0 0-1 1Z"/><path d="M18 9a3 3 0 0 1 0 6"/></svg></div><div class="name">AI Marketing</div><div class="desc">Content, campaigns &amp; automation</div></div>
+      </div>
+
+      <div class="sec-title"><svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg> Core Skills &amp; Tools <svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg></div>
+      <div class="chips">
+        <span class="chip"><b>Large Language Models</b></span>
+        <span class="chip">Fine-tuning</span>
+        <span class="chip">RAG Pipelines</span>
+        <span class="chip">Prompt Engineering</span>
+        <span class="chip">Conversational AI</span>
+        <span class="chip">Python</span>
+        <span class="chip">AI Automation</span>
+        <span class="chip">Product Development</span>
+      </div>
+
+      <div class="page-num">The Learner &amp; The Path &nbsp;·&nbsp; I — Profile</div>
+    </div>
+  </main>
+
+  <!-- ════════════ PAGE 2 — THE PATH / SPIRITUAL GROWTH ════════════ -->
+  <main class="sheet page2" role="article" aria-label="The Path — Spiritual Growth I Seek">
+    <div class="mandala-bg" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="74"/><circle cx="100" cy="100" r="50"/><circle cx="100" cy="100" r="26"/><circle cx="100" cy="100" r="8" fill="currentColor"/>
+        <g><use href="#mpetal" transform="rotate(0 100 100)"/><use href="#mpetal" transform="rotate(30 100 100)"/><use href="#mpetal" transform="rotate(60 100 100)"/><use href="#mpetal" transform="rotate(90 100 100)"/><use href="#mpetal" transform="rotate(120 100 100)"/><use href="#mpetal" transform="rotate(150 100 100)"/><use href="#mpetal" transform="rotate(180 100 100)"/><use href="#mpetal" transform="rotate(210 100 100)"/><use href="#mpetal" transform="rotate(240 100 100)"/><use href="#mpetal" transform="rotate(270 100 100)"/><use href="#mpetal" transform="rotate(300 100 100)"/><use href="#mpetal" transform="rotate(330 100 100)"/></g>
+      </svg>
+    </div>
+    <div class="frame" aria-hidden="true"></div>
+    <div class="corner tl" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cornerart"/></svg></div>
+    <div class="corner tr" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cornerart"/></svg></div>
+    <div class="corner bl" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cornerart"/></svg></div>
+    <div class="corner br" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cornerart"/></svg></div>
+
+    <div class="content">
+      <header>
+        <div class="head-inner">
+          <div class="om-ring"><span class="om-mark">ॐ</span></div>
+          <h1 class="foil">The Path</h1>
+          <p class="tagline">The Spiritual Growth I Seek</p>
+          <div class="orn" aria-hidden="true"><span class="l"></span><span class="d"></span><span class="om">ॐ</span><span class="d"></span><span class="l"></span></div>
+        </div>
+      </header>
+
+      <p class="path-intro">
+        Beyond titles and achievements, a quieter question keeps arising within me —
+        what is knowledge without wisdom, success without peace, achievement without purpose?
+      </p>
+
+      <div class="body">
+        <p>These questions slowly turned me toward spirituality — toward scriptures, mantra chanting, self-discipline, and contemplation. The teachings of <strong>Bhavesh Ji</strong> and <strong>Parveen Ji</strong> remind me that inner growth and worldly action need not be separate paths, and the path of <strong>Adi Shankaracharya</strong> inspires me deeply — truth, self-inquiry, and humility before knowledge.</p>
+        <p>Above all, I long to learn the <strong>Yogic Path</strong> — not yoga as mere posture, but Yoga as it was first taught: the disciplining of body, breath, and mind. I wish to learn <em>āsana</em>, <em>prāṇāyāma</em>, and <em>dhyāna</em>, walking step by step along Patañjali's eightfold path, under the guidance of those who have walked it before me.</p>
+      </div>
+
+      <p class="verse">॥ योगश्चित्तवृत्तिनिरोधः ॥</p>
+
+      <div class="sec-title"><svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg> What I Seek <svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg></div>
+      <div class="qlist">
+        <span>To grow — in wisdom, not merely in skill.</span>
+        <span>To learn — the ancient way, with reverence and service.</span>
+        <span>To serve — offering my work as worship.</span>
+        <span>To live — more consciously, day by day.</span>
+      </div>
+      <p class="verse">॥ श्रद्धावान् लभते ज्ञानम् ॥</p>
+
+      <div class="sec-title"><svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg> With Gratitude <svg class="lotus" viewBox="0 0 24 19"><use href="#lotusg"/></svg></div>
+      <div class="body">
+        <p>This <strong>Mahāśivarātri</strong>, I write with a full and humble heart. I did not have the means to purchase the enrollment myself — yet the team, in their kindness, chose to offer it to me. I do not take this gift lightly; I hope to honour it through sincerity and <em>seva</em>.</p>
+        <p>In return, I offer my hands and my craft. As a Generative AI Developer, I build many tools and intelligent systems — and whatever skill I possess, I wish to place it in service. Give me an opportunity, and I will give it my whole heart.</p>
+      </div>
+      <p class="verse">॥ तत्कुरुष्व मदर्पणम् ॥</p>
+
+      <footer>
+        <div class="sign-row">
+          <div class="sig">
+            <div class="name">Bijoy Laxmi Biswas</div>
+            <div class="role">Generative AI Developer · The Learner Yogi</div>
+          </div>
+          <div class="seal" aria-label="emblem" role="img">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="54" stroke="#c79a3e" stroke-width="1.4"/>
+              <circle cx="60" cy="60" r="47" stroke="#c79a3e" stroke-width="3" stroke-dasharray="1.4 5.4" opacity=".7"/>
+              <circle cx="60" cy="60" r="39" stroke="#9a6b1f" stroke-width="1" opacity=".5"/>
+              <text x="60" y="75" text-anchor="middle" font-family="'Tiro Devanagari Sanskrit',serif" font-size="40" fill="#9a6b1f">ॐ</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="contacts">
+          <span><span class="lbl">Portfolio</span><a href="https://thelearner-yogi.vercel.app/" target="_blank" rel="noopener">thelearner-yogi.vercel.app</a></span>
+          <span><span class="lbl">GitHub</span><a href="https://github.com/yogixt" target="_blank" rel="noopener">github.com/yogixt</a></span>
+          <span><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/yogixt/" target="_blank" rel="noopener">linkedin.com/in/yogixt</a></span>
+          <span><span class="lbl">Instagram</span><a href="https://www.instagram.com/thelearner.yogi/" target="_blank" rel="noopener">thelearner.yogi</a></span>
+          <span><span class="lbl">Phone</span><span>+91 97490 33085</span></span>
+        </div>
+
+        <div class="om-foot" aria-hidden="true">॥ ॐ नमः शिवाय ॥</div>
+        <div class="page-num">The Learner &amp; The Path &nbsp;·&nbsp; II — The Path</div>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
