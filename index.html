@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500&family=Marcellus&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500&family=Great+Vibes&family=Marcellus&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet" />
 
 <style>
   :root{
@@ -195,6 +195,17 @@
   footer{ margin-top:18px; }
   .sign-row{ display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap;
     border-top:1px solid var(--line); padding-top:16px; }
+  /* unique hand-signed closing */
+  .signoff{ text-align:center; border-top:1px solid var(--line); padding-top:18px; margin-top:4px; }
+  .signoff-line{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.14rem; color:var(--ink-soft); margin:0 0 4px; }
+  .sign-wrap{ display:inline-block; position:relative; padding:2px 14px 0; }
+  .signature{ font-family:'Great Vibes', cursive; font-size:3rem; line-height:1; margin:0;
+    background:linear-gradient(135deg,#ffb347,#ff9933 40%,#e2761b 75%,#c2540e);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .sign-rule{ display:block; height:0; margin-top:2px;
+    border-bottom:1.5px solid var(--saffron); border-radius:2px;
+    box-shadow:0 1px 0 rgba(226,118,27,.25); }
+  .signoff-role{ font-family:'Marcellus',serif; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); margin:8px 0 0; }
   .sig .name{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:1.55rem; color:var(--maroon); line-height:1.05; }
   .sig .role{ font-family:'Marcellus',serif; font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-deep); margin-top:3px; }
   .seal{ width:66px; height:66px; flex:0 0 auto; opacity:.92; }
@@ -239,7 +250,8 @@
     .sheet:last-of-type{ break-after:auto; }
     .sheet::after{ display:none !important; }
     /* gold-foil clip-text doesn't survive print rasterisation — engrave in maroon */
-    .foil{ background:none !important; -webkit-text-fill-color:var(--saffron-deep) !important; color:var(--saffron-deep) !important; }
+    .foil,.signature{ background:none !important; -webkit-text-fill-color:var(--saffron-deep) !important; color:var(--saffron-deep) !important; }
+    .signoff{ padding-top:13px; } .signoff-line{ font-size:1.05rem; } .signature{ font-size:2.5rem; } .signoff-role{ margin-top:6px; }
     .skills,.quals,.skill,.qual,.sign-row,.chips,.work{ break-inside:avoid; }
     .contacts a{ border-bottom:none; }
     /* breathing room — page 1 fills naturally */
@@ -264,15 +276,19 @@
     .om-foot{ margin-top:9px; } .page-num{ margin-top:8px; }
 
     /* page 2 compacted independently so it stays one page */
-    .page2 header{ margin-bottom:6px; }
-    .page2 .om-ring{ width:48px; height:48px; } .page2 .om-mark{ font-size:1.8rem; }
-    .page2 h1{ font-size:2rem; } .page2 .orn{ margin-top:8px; }
-    .page2 .path-intro{ font-size:1rem; margin:4px auto 8px; }
-    .page2 .sec-title{ margin:12px 0 8px; }
-    .page2 .verse{ margin:8px 0 2px; }
-    .page2 .qlist{ line-height:1.55; margin:7px 0; }
-    .page2 .body p{ margin:0 0 .5em; }
-    .page2 footer{ margin-top:10px; }
+    .page2 header{ margin-bottom:4px; }
+    .page2 .om-ring{ width:44px; height:44px; } .page2 .om-mark{ font-size:1.65rem; }
+    .page2 h1{ font-size:1.85rem; } .page2 .orn{ margin-top:6px; }
+    .page2 .path-intro{ font-size:.97rem; margin:3px auto 6px; }
+    .page2 .body{ font-size:.91rem; line-height:1.48; }
+    .page2 .sec-title{ margin:10px 0 6px; }
+    .page2 .verse{ font-size:1.04rem; margin:6px 0 2px; }
+    .page2 .qlist{ font-size:.97rem; line-height:1.45; margin:5px 0; }
+    .page2 .body p{ margin:0 0 .42em; }
+    .page2 footer{ margin-top:8px; }
+    .page2 .signoff{ padding-top:9px; } .page2 .signoff-line{ font-size:.97rem; margin-bottom:2px; }
+    .page2 .signature{ font-size:2.1rem; } .page2 .signoff-role{ margin-top:4px; }
+    .page2 .contacts{ margin-top:9px; } .page2 .om-foot{ margin-top:8px; }
   }
 </style>
 </head>
@@ -426,19 +442,13 @@
       <p class="verse">॥ तत्कुरुष्व मदर्पणम् ॥</p>
 
       <footer>
-        <div class="sign-row">
-          <div class="sig">
-            <div class="name">Bijoy Laxmi Biswas</div>
-            <div class="role">Generative AI Developer · The Learner Yogi</div>
+        <div class="signoff">
+          <p class="signoff-line">With folded hands — in sincerity, service, and gratitude.</p>
+          <div class="sign-wrap">
+            <p class="signature">Bijoy Laxmi Biswas</p>
+            <span class="sign-rule" aria-hidden="true"></span>
           </div>
-          <div class="seal" aria-label="emblem" role="img">
-            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="60" cy="60" r="54" stroke="#c79a3e" stroke-width="1.4"/>
-              <circle cx="60" cy="60" r="47" stroke="#c79a3e" stroke-width="3" stroke-dasharray="1.4 5.4" opacity=".7"/>
-              <circle cx="60" cy="60" r="39" stroke="#9a6b1f" stroke-width="1" opacity=".5"/>
-              <text x="60" y="75" text-anchor="middle" font-family="'Tiro Devanagari Sanskrit',serif" font-size="40" fill="#9a6b1f">ॐ</text>
-            </svg>
-          </div>
+          <p class="signoff-role">Generative AI Developer · The Learner Yogi</p>
         </div>
 
         <div class="contacts">
