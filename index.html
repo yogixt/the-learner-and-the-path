@@ -78,7 +78,7 @@
   .frame::after{ content:""; position:absolute; inset:4px; border:1px solid rgba(199,154,62,.18); border-radius:5px; }
 
   /* intricate gold mandala corners */
-  .corner{ position:absolute; width:140px; height:140px; opacity:.95; z-index:0; pointer-events:none; }
+  .corner{ display:none !important; }
   .corner svg{ width:100%; height:100%; display:block; overflow:visible;
     transform-origin:0 0; animation:mspin 80s linear infinite; }
   .corner.tl{top:0;left:0;} .corner.tr{top:0;right:0;transform:scaleX(-1);}
